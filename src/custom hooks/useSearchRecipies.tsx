@@ -7,15 +7,14 @@ import { RecipeSearch } from "../utils/types";
 import dotenv from 'dotenv';
 dotenv.config();
 
-export function useFetch(){
+export function useFetch(searchRecipies: string) {
     const [recipies, setRecipies] = useState<RecipeSearch[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
-    const [searchRecipies, setSearchRecipies] = useState<string>("");
 
-    useEffect(()=>{
-        async function fetchRecipies(){
-            try{
+    useEffect(() => {
+        async function fetchRecipies() {
+            try {
                 const apiKey = process.env.API_KEY;
                 if (!apiKey) {
                     throw new Error("API_KEY is not defined in the environment variables.");
@@ -28,17 +27,17 @@ export function useFetch(){
                         query: searchRecipies,
                     }
                 });
-                setRecipies(response.data);
-                console.log(response.data);
-            }catch(err:any){
+                setRecipies(response.data.results);
+                console.log(response.data.results);
+            } catch (err: any) {
                 setError(err.message);
-            }finally{
+            } finally {
                 setLoading(false);
             }
         }
         fetchRecipies();
-    },[searchRecipies]);
-    return{recipies, error, loading}
+    }, [searchRecipies]);
+    return { recipies, error, loading };
 }
 
 

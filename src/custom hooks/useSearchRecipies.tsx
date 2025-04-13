@@ -10,8 +10,14 @@ export function useFetch(searchRecipies: string) {
 
     useEffect(() => {
         async function fetchRecipies() {
+            if (searchRecipies.trim() === "") {
+                setRecipies([]);
+                setLoading(false);
+                return;
+            }
+
             try {
-                const apiKey:string = '53e2afa895d944b4b96f71204850f1e5';
+                const apiKey: string = '53e2afa895d944b4b96f71204850f1e5';
                 const response = await axios.get('https://api.spoonacular.com/recipes/complexSearch', {
                     params: {
                         //it authenticates the request with the API

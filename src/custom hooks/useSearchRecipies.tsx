@@ -3,10 +3,6 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { RecipeSearch } from "../utils/types";
 
-//TypeScript needs @node_types installed to fully understand "process"
-import dotenv from 'dotenv';
-dotenv.config();
-
 export function useFetch(searchRecipies: string) {
     const [recipies, setRecipies] = useState<RecipeSearch[]>([]);
     const [loading, setLoading] = useState(true);
@@ -15,10 +11,7 @@ export function useFetch(searchRecipies: string) {
     useEffect(() => {
         async function fetchRecipies() {
             try {
-                const apiKey = process.env.API_KEY;
-                if (!apiKey) {
-                    throw new Error("API_KEY is not defined in the environment variables.");
-                }
+                const apiKey:string = '53e2afa895d944b4b96f71204850f1e5';
                 const response = await axios.get('https://api.spoonacular.com/recipes/complexSearch', {
                     params: {
                         //it authenticates the request with the API

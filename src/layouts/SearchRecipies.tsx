@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useFetch } from '../custom hooks/useSearchRecipies'
 import { RecipeSearch } from '../utils/types'
+import Input from '../components/Input';
 
 
 function SearchRecipies() {
@@ -10,11 +11,13 @@ function SearchRecipies() {
 
     return (
         <>
-            <main className='w-full h-[1200px]'>
-                <div>
-                    <h1></h1>
-                    <div>
-                        <input
+            <main className='flex flex-col w-full h-[1200px] bg-zinc-200'>
+                <div className='
+                  bg-green-700 w-full sm:max-w-3xl flex flex-col justify-center items-center text-center 
+                    mx-auto min-h-[300px] rounded-lg shadow-xl shadow-zinc-200 p-4 mt-10'>
+                    <h1 className='text-2xl sm:text-3xl font-bold uppercase text-yellow-400'>Cerca la tua ricetta</h1>
+                    <div className='p-3 mt-5'>
+                        <Input
                             type="text"
                             value={searchRecipies}
                             placeholder='cerca la tua ricetta'

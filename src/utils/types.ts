@@ -1,3 +1,4 @@
+//API Types
 export interface RecipeSearch {
     id: number;
     title: string;
@@ -21,3 +22,15 @@ export interface Ingredient{
     unit: string;
 }
 
+//React-router types
+export interface LinkProps {
+    props: {
+        pathname: string;
+        search: string;
+    };
+}
+
+
+export interface NavLinks {
+    link: string | LinkProps;
+}

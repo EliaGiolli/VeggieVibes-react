@@ -6,7 +6,7 @@ interface CardProps{
 
 function Card({children}:CardProps) {
   return (
-    <article className="w-full sm:w-3xl">
+    <article className="bg-white w-full flex flex-col justify-center items-center text-center rounded-md shadow-md shadow-gray-400 p-2">
         {children}
     </article>
   )

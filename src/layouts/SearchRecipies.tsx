@@ -9,6 +9,7 @@ import { RecipeSearch } from '../utils/types'
 import Input from '../components/Input';
 import Card from '../components/Card';
 import Button from '../components/Button';
+import RecipeDetails from './RecipeDetails';
 
 
 function SearchRecipies() {
@@ -50,7 +51,7 @@ function SearchRecipies() {
                                             </div>
                                             <div className='p-2'>
                                                 <Button>
-                                                    <Link to={"/RecipeDetails"}>Clicca qui!</Link>
+                                                    <Link to={"/RecipeDetails" }>Clicca qui!</Link>
                                                 </Button>
                                             </div>
                                         </div>

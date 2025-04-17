@@ -1,13 +1,31 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { BrowserRouter } from 'react-router-dom'
+import {RouterProvider, createBrowserRouter } from 'react-router-dom'
+
+//CSS FILE
 import './index.css'
-import App from './App.tsx'
+
+//ROUTES
+import SearchRecipies from './layouts/SearchRecipies'
+import ErrorPage from './layouts/ErrorPage'
+import RecipeDetails from './layouts/RecipeDetails'
+
+//ROUTER
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <SearchRecipies />,
+    errorElement: <ErrorPage />
+  },
+  {
+    path: '/recipe/:recipeId',
+    element: <RecipeDetails />,
+  },
+
+]);
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <RouterProvider router={router} />
   </StrictMode>,
 )

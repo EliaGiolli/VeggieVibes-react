@@ -65,6 +65,8 @@ export function useFetchDetails(searchRecipies: string) {
       return;
     }
 
+    console.log("Fetching details for recipeId:", searchRecipies); // Debugging line
+
     const controller = new AbortController();
 
     const delayDebounce = setTimeout(() => {
@@ -81,6 +83,7 @@ export function useFetchDetails(searchRecipies: string) {
           },
         })
         .then((response) => {
+          console.log("Recipe details response:", response.data); // Debugging line
           setRecipiesDetail(response.data); 
         })
         .catch((err) => {

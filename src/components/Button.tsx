@@ -8,7 +8,7 @@ interface ButtonProps{
 
 function Button({children, onClick}:ButtonProps) {
   return (
-    <button className='bg-red-500 text-white hover:bg-red-700 rounded-lg shadow-lg shadow-zinc-400 p-2' onClick={onClick}>
+    <button className='bg-green-700 hover:bg-green-800 text-white rounded-lg shadow-lg shadow-zinc-400 p-2 transition-all' onClick={onClick}>
         {children}
     </button>
   )

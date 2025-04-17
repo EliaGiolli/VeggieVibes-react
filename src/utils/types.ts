@@ -11,9 +11,8 @@ export interface RecipeDetails {
     id: number;
     title: string;
     readyInMinutes: number;
-    servings: number;
     image: string;
-    ingredients:Ingredient[] | null;
+    extendedIngredients:Ingredient[] | null;
 }
 
 export interface Ingredient{

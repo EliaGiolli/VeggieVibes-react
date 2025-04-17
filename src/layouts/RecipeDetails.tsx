@@ -8,7 +8,7 @@ function RecipeDetails() {
     const { recipiesDetail, loading, error } = useFetchDetails(recipeId || '');
 
     return (
-        <div className='bg-zinc-200 flex flex-col justify-center items-center text-center p-4 min-h-screen w-full'>
+        <div className='bg-zinc-100 flex flex-col justify-center items-center text-center p-4 min-h-screen w-full'>
             {loading && <p>Loading...</p>}
             {error && <p>{error}</p>}
             {

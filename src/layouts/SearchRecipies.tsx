@@ -19,19 +19,19 @@ function SearchRecipies() {
 
     return (
         <>
-            <main className='flex flex-col w-full min-h-[1200px] bg-zinc-200'>
+            <main className='flex flex-col w-full min-h-[1200px] bg-zinc-100'>
                 <div className='
                   bg-green-700 w-full sm:w-fit flex flex-col justify-center items-center text-center 
                     mx-auto min-h-[300px] rounded-lg shadow-xl shadow-gray-400 p-4 mt-10'>
-                    <h1 className='text-2xl sm:text-4xl font-bold uppercase text-yellow-400 my-3'>Cerca la tua ricetta</h1>
+                    <h1 className='text-2xl sm:text-4xl font-bold uppercase text-yellow-400 my-3'>Search for your veg recipe</h1>
                     <div className='w-full sm:max-w-2xl py-2 px-3 my-5'>
-                        <p className='text-white text-lg sm:text-xl'>Cerca nel nostro fornitissimo menu le tue <strong className='text-yellow-400'>ricette vegetariane o vegane</strong> preferite! </p>
+                        <p className='text-white text-lg sm:text-xl'>Search in out well-furnished inventory for <strong className='text-yellow-400'>vegetarian or vegan recipes</strong></p>
                     </div>
                     <div className='p-3'>
                         <Input
                             type="text"
                             value={searchRecipies}
-                            placeholder='cerca la tua ricetta'
+                            placeholder='search...'
                             onChange={(e) => setSearchRecipies(e.target.value)}
                         />
                     </div>
@@ -52,7 +52,7 @@ function SearchRecipies() {
                                             <div className='p-2'>
                                                 <Button>
                                                     
-                                                    <Link to={`/recipe/${recipe.id}`}>Clicca qui!</Link>
+                                                    <Link to={`/recipe/${recipe.id}`}>Click here!</Link>
                                                 </Button>
                                             </div>
                                         </div>

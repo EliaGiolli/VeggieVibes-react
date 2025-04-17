@@ -25,17 +25,17 @@ function Navbar() {
                 isActive ? 'text-yellow-300 underline' : 'hover:text-yellow-300 transition-colors'
               }
             >
-              Ricette
+              Recipes
             </NavLink>
           </li>
           <li>
             <NavLink
-              to="/work"
+              to="/work-with-us"
               className={({ isActive }) =>
                 isActive ? 'text-yellow-300 underline' : 'hover:text-yellow-300 transition-colors'
               }
             >
-              Lavora con noi
+              Work with us
             </NavLink>
           </li>
         </ul>

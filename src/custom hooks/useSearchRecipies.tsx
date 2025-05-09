@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { RecipeDetails, RecipeSearch } from "../types/ApiTypes";
+import { RecipeDetails, RecipeSearch } from "../types/apiTypes";
 
 export function useFetch(searchRecipies: string) {
   const [recipies, setRecipies] = useState<RecipeSearch[]>([]);

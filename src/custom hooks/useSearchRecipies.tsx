@@ -34,7 +34,7 @@ export function useFetch(searchRecipies: string) {
           setRecipies(response.data.results);
         })
         .catch((err) => {
-          if (axios.isCancel(err)) return; // richiesta annullata
+          if (axios.isCancel(err)) return; // request aborted
           setError(err.message);
         })
         .finally(() => {
@@ -45,7 +45,7 @@ export function useFetch(searchRecipies: string) {
     // cleanup
     return () => {
       clearTimeout(delayDebounce);
-      controller.abort(); // annulla fetch se searchRecipies cambia durante attesa debounce
+      controller.abort(); // controlle.abort() cancels the fetch request if searchRecipes changes during the debounce
     };
   }, [searchRecipies]);
 
@@ -64,7 +64,6 @@ export function useFetchDetails(searchRecipies: string) {
       return;
     }
 
-    console.log("Fetching details for recipeId:", searchRecipies); // Debugging line
 
     const controller = new AbortController();
 
@@ -82,7 +81,6 @@ export function useFetchDetails(searchRecipies: string) {
           },
         })
         .then((response) => {
-          console.log("Recipe details response:", response.data); // Debugging line
           setRecipiesDetail(response.data); 
         })
         .catch((err) => {

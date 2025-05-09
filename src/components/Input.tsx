@@ -1,12 +1,4 @@
-import {type ReactNode, type ChangeEvent} from 'react'
-
-interface InputProps{
-    children?: ReactNode;
-    value:string;
-    type: string
-    placeholder: string;
-    onChange: (event: ChangeEvent<HTMLInputElement>) => void;
-}
+import { InputProps } from "../types/inputTypes"
 
 function Input({children, type, placeholder, onChange, value}: InputProps) {
   return (

@@ -1,10 +1,4 @@
-import { type ReactNode, MouseEvent } from 'react'
-
-interface ButtonProps{
-    children?: ReactNode;
-    type?: string;
-    onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
-}
+import { ButtonProps } from "../types/buttonTypes"
 
 function Button({children, onClick}:ButtonProps) {
   return (

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 //Internal imports
 import { useFetch } from '../custom hooks/useSearchRecipies'
-import { RecipeSearch } from '../utils/types'
+import { RecipeSearch } from '../types/ApiTypes'
 //components
 import Input from '../components/Input';
 import Card from '../components/Card';

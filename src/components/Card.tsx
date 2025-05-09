@@ -1,9 +1,4 @@
-import { type ReactNode } from "react"
-
-interface CardProps{
-    children?:ReactNode;
-    className?: string;
-}
+import { CardProps } from "../types/cardTypes"
 
 function Card({children}:CardProps) {
   return (

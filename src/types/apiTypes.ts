@@ -20,16 +20,3 @@ export interface Ingredient{
     amount:number;
     unit: string;
 }
-
-//React-router types
-export interface LinkProps {
-    props: {
-        pathname: string;
-        search: string;
-    };
-}
-
-
-export interface NavLinks {
-    link: string | LinkProps;
-}

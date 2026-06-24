@@ -1,12 +1,11 @@
 import { createBrowserRouter } from 'react-router-dom';
 
-// Layouts & Pages
 import RootLayout from '../layouts/RootLayout';
-import ErrorPage from '../layouts/ErrorPage';
-import HomePage from '../layouts/HomePage';
-import SearchRecipies from '../layouts/SearchRecipies';
-import RecipeDetails from '../layouts/RecipeDetails';
-import WorkTogether from '../layouts/WorkTogether';
+import ErrorPage from '../../shared/pages/ErrorPage';
+import HomePage from '../../features/home/pages/HomePage';
+import SearchRecipes from '../../features/recipes/pages/SearchRecipes';
+import RecipeDetails from '../../features/recipes/pages/RecipeDetails';
+import WorkTogether from '../../features/work/pages/WorkTogether';
 
 export const router = createBrowserRouter([
   {
@@ -15,12 +14,12 @@ export const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        index: true, 
+        index: true,
         element: <HomePage />,
       },
       {
         path: 'recipes',
-        element: <SearchRecipies />,
+        element: <SearchRecipes />,
       },
       {
         path: 'recipe/:recipeId',

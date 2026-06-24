@@ -22,8 +22,7 @@ function Footer() {
           <ul className="space-y-1 text-sm">
             <li><Link to="/" className="hover:underline">Home</Link></li>
             <li><Link to="/recipes" className="hover:underline">Recipes</Link></li>
-            <li><Link to="/work" className="hover:underline">Join Our Team</Link></li>
-            <li><Link to="/privacy" className="hover:underline">Privacy Policy</Link></li>
+            <li><Link to="/work-with-us" className="hover:underline">Join Our Team</Link></li>
           </ul>
         </div>
 

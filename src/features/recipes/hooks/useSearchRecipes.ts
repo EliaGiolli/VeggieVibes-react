@@ -1,15 +1,18 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { RecipeDetails, RecipeSearch } from "../types/apiTypes";
+import { RecipeDetails, RecipeSearch } from "../types/recipeTypes";
 
-export function useFetch(searchRecipies: string) {
-  const [recipies, setRecipies] = useState<RecipeSearch[]>([]);
+const API_KEY = import.meta.env.VITE_API_KEY as string;
+const BASE_URL = "https://api.spoonacular.com/recipes";
+
+export function useFetch(query: string) {
+  const [recipes, setRecipes] = useState<RecipeSearch[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (searchRecipies.trim() === "") {
-      setRecipies([]);
+    if (query.trim() === "") {
+      setRecipes([]);
       setLoading(false);
       return;
     }
@@ -20,68 +23,16 @@ export function useFetch(searchRecipies: string) {
       setLoading(true);
       setError(null);
 
-      const apiKey: string = "53e2afa895d944b4b96f71204850f1e5";
-
       axios
-        .get("https://api.spoonacular.com/recipes/complexSearch", {
+        .get(`${BASE_URL}/complexSearch`, {
           signal: controller.signal,
           params: {
-            apiKey: apiKey,
-            query: searchRecipies,
+            apiKey: API_KEY,
+            query,
           },
         })
         .then((response) => {
-          setRecipies(response.data.results);
-        })
-        .catch((err) => {
-          if (axios.isCancel(err)) return; // request aborted
-          setError(err.message);
-        })
-        .finally(() => {
-          setLoading(false);
-        });
-    }, 400); // debounce: 400ms
-
-    // cleanup
-    return () => {
-      clearTimeout(delayDebounce);
-      controller.abort(); // controlle.abort() cancels the fetch request if searchRecipes changes during the debounce
-    };
-  }, [searchRecipies]);
-
-  return { recipies, loading, error };
-}
-
-export function useFetchDetails(searchRecipies: string) {
-  const [recipiesDetail, setRecipiesDetail] = useState<RecipeDetails | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    if (searchRecipies.trim() === "") {
-      setRecipiesDetail(null);
-      setLoading(false);
-      return;
-    }
-
-
-    const controller = new AbortController();
-
-    const delayDebounce = setTimeout(() => {
-      setLoading(true);
-      setError(null);
-
-      const apiKey: string = "53e2afa895d944b4b96f71204850f1e5";
-
-      axios
-        .get(`https://api.spoonacular.com/recipes/${searchRecipies}/information`, { 
-          signal: controller.signal,
-          params: {
-            apiKey: apiKey,
-          },
-        })
-        .then((response) => {
-          setRecipiesDetail(response.data); 
+          setRecipes(response.data.results);
         })
         .catch((err) => {
           if (axios.isCancel(err)) return;
@@ -92,12 +43,57 @@ export function useFetchDetails(searchRecipies: string) {
         });
     }, 400);
 
-    // cleanup
     return () => {
       clearTimeout(delayDebounce);
       controller.abort();
     };
-  }, [searchRecipies]);
+  }, [query]);
 
-  return { recipiesDetail, loading, error };
+  return { recipes, loading, error };
+}
+
+export function useFetchDetails(recipeId: string) {
+  const [recipeDetail, setRecipeDetail] = useState<RecipeDetails | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (recipeId.trim() === "") {
+      setRecipeDetail(null);
+      setLoading(false);
+      return;
+    }
+
+    const controller = new AbortController();
+
+    const delayDebounce = setTimeout(() => {
+      setLoading(true);
+      setError(null);
+
+      axios
+        .get(`${BASE_URL}/${recipeId}/information`, {
+          signal: controller.signal,
+          params: {
+            apiKey: API_KEY,
+          },
+        })
+        .then((response) => {
+          setRecipeDetail(response.data);
+        })
+        .catch((err) => {
+          if (axios.isCancel(err)) return;
+          setError(err.message);
+        })
+        .finally(() => {
+          setLoading(false);
+        });
+    }, 400);
+
+    return () => {
+      clearTimeout(delayDebounce);
+      controller.abort();
+    };
+  }, [recipeId]);
+
+  return { recipeDetail, loading, error };
 }

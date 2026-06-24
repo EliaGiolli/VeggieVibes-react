@@ -3,19 +3,19 @@ import { type InputHTMLAttributes } from "react";
 import { cn } from "@/core/lib/utils";
 
 const inputVariants = cva(
-  "flex w-full rounded-md text-sm transition-colors placeholder:text-zinc-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50",
+  "flex w-full rounded-xl text-sm transition-all duration-150 placeholder:text-stone-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50",
   {
     variants: {
       variant: {
         default:
-          "border border-zinc-300 bg-white text-zinc-900 focus-visible:ring-green-500 focus-visible:border-green-500",
+          "border border-stone-300 bg-white text-stone-900 focus-visible:ring-emerald-500 focus-visible:border-emerald-500",
         search:
-          "border-transparent bg-zinc-200 text-center hover:bg-amber-100 focus-visible:ring-amber-400 focus-visible:border-amber-400",
+          "border-2 border-white bg-white text-stone-900 placeholder:text-stone-500 focus-visible:ring-amber-400 focus-visible:border-amber-400",
       },
       size: {
-        default: "h-9 px-3 py-1",
-        sm: "h-8 px-2.5 text-xs",
-        lg: "h-11 px-4 text-base",
+        default: "h-10 px-4 py-2",
+        sm: "h-8 px-3 text-xs",
+        lg: "h-12 px-5 text-base",
       },
     },
     defaultVariants: {

@@ -6,16 +6,17 @@ import ErrorBoundary from '../../shared/components/ErrorBoundary';
 
 function RootLayout() {
   return (
-    <div className="min-h-screen bg-zinc-100 text-zinc-900">
+    <div className="min-h-screen bg-stone-50 text-stone-900">
+      <a href="#main-content" className="skip-to-main">Skip to main content</a>
       <Navbar />
-      <main className="pt-20 px-4 max-w-7xl mx-auto">
+      <main id="main-content" className="pt-16 max-w-7xl mx-auto">
         <ErrorBoundary>
           <Outlet />
         </ErrorBoundary>
       </main>
       <Footer />
     </div>
-  )
+  );
 }
 
 export default RootLayout;

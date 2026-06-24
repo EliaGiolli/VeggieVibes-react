@@ -1,9 +1,8 @@
-import { type ReactNode, type ChangeEvent } from "react";
+import { type ChangeEvent } from "react";
 
-export interface InputProps{
-    children?: ReactNode;
-    value:string;
-    type: string
+export interface InputProps {
+    value: string;
+    type: string;
     placeholder: string;
     onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }

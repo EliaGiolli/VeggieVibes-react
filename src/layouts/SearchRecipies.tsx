@@ -1,64 +1,57 @@
 import { useState } from 'react';
 
-//external libraries
 import { Link } from 'react-router-dom';
-//Internal imports
-import { useFetch } from '../custom hooks/useSearchRecipies'
-import { RecipeSearch } from '../types/apiTypes'
-//components
+import { useFetch } from '../custom hooks/useSearchRecipies';
+import { RecipeSearch } from '../types/apiTypes';
 import Input from '../components/Input';
 import Card from '../components/Card';
-import Button from '../components/Button';
-
-
 
 function SearchRecipies() {
-    const [searchRecipies, setSearchRecipies] = useState<string>("");
+    const [searchQuery, setSearchQuery] = useState<string>("");
 
-    const { recipies, error, loading } = useFetch(searchRecipies);
+    const { recipes, error, loading } = useFetch(searchQuery);
 
     return (
         <>
             <main className='flex flex-col w-full min-h-[1200px] bg-zinc-100'>
                 <div className='
-                  bg-green-700 w-full sm:w-fit flex flex-col justify-center items-center text-center 
+                  bg-green-700 w-full sm:w-fit flex flex-col justify-center items-center text-center
                     mx-auto min-h-[300px] rounded-lg shadow-xl shadow-gray-400 p-4 mt-10'>
                     <h1 className='text-2xl sm:text-4xl font-bold uppercase text-yellow-400 my-3'>Search for your veg recipe</h1>
                     <div className='w-full sm:max-w-2xl py-2 px-3 my-5'>
-                        <p className='text-white text-lg sm:text-xl'>Search in out well-furnished inventory for <strong className='text-yellow-400'>vegetarian or vegan recipes</strong></p>
+                        <p className='text-white text-lg sm:text-xl'>Search in our well-furnished inventory for <strong className='text-yellow-400'>vegetarian or vegan recipes</strong></p>
                     </div>
                     <div className='p-3'>
                         <Input
                             type="text"
-                            value={searchRecipies}
+                            value={searchQuery}
                             placeholder='search...'
-                            onChange={(e) => setSearchRecipies(e.target.value)}
+                            onChange={(e) => setSearchQuery(e.target.value)}
                         />
                     </div>
-                    
-                    {/* DISPLAY API RESULTS */}
-                    {loading && <p className='bg-zinc-200 text-gray-900 p-2'>Loading...</p>}
+
+                    {loading && searchQuery.trim() !== "" && <p className='bg-zinc-200 text-gray-900 p-2'>Loading...</p>}
                     {error && <p className='bg-red-100 text-red-500 p-2'>{error}</p>}
-                    <div className='bg-green-700 grid grid-cols-1 md:grid cols-3 lg:grid-cols-4 gap-6 my-5 p-2 w-full h-full'>
+                    <div className='bg-green-700 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 my-5 p-2 w-full h-full'>
                         {
-                            recipies.length > 0 && recipies.slice(0, 20).map((recipe: RecipeSearch, index) => {
-                                return (
-                                    <Card key={index}>
-                                        <h3 className='text-yellow-400 text-xl sm:text-2xl p-1'>{recipe.title}</h3>
-                                        <div className='flex flex-col my-3'>
-                                            <div className='max-w-[200px] p-2'>
-                                                <img src={recipe.image} alt={recipe.title} className=" min-h-[100px] object-cover" />
-                                            </div>
-                                            <div className='p-2'>
-                                                <Button>
-                                                    
-                                                    <Link to={`/recipe/${recipe.id}`}>Click here!</Link>
-                                                </Button>
-                                            </div>
+                            recipes.length > 0 && recipes.slice(0, 20).map((recipe: RecipeSearch) => (
+                                <Card key={recipe.id}>
+                                    <h3 className='text-yellow-400 text-xl sm:text-2xl p-1'>{recipe.title}</h3>
+                                    <div className='flex flex-col my-3'>
+                                        <div className='max-w-[200px] p-2'>
+                                            <img src={recipe.image} alt={recipe.title} className="min-h-[100px] object-cover" />
                                         </div>
-                                    </Card>
-                                );
-                            })
+                                        <div className='p-2'>
+                                            <Link
+                                                to={`/recipe/${recipe.id}`}
+                                                className='bg-green-700 hover:bg-green-800 text-white rounded-lg shadow-lg shadow-zinc-400 p-2 transition-all inline-block'
+                                            >
+                                                View Recipe
+                                            </Link>
+                                        </div>
+                                    </div>
+                                </Card>
+                            ))
                         }
                     </div>
                 </div>

@@ -5,6 +5,7 @@ import { useFetch } from '../hooks/useSearchRecipes';
 import { RecipeSearch } from '../types/recipeTypes';
 import Input from '../../../shared/components/Input';
 import Card from '../../../shared/components/Card';
+import { buttonVariants } from '../../../shared/components/Button';
 
 function SearchRecipes() {
     const [searchQuery, setSearchQuery] = useState<string>("");
@@ -23,6 +24,7 @@ function SearchRecipes() {
                     </div>
                     <div className='p-3'>
                         <Input
+                            variant="search"
                             type="text"
                             value={searchQuery}
                             placeholder='search...'
@@ -35,20 +37,18 @@ function SearchRecipes() {
                     <div className='bg-green-700 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 my-5 p-2 w-full h-full'>
                         {
                             recipes.length > 0 && recipes.slice(0, 20).map((recipe: RecipeSearch) => (
-                                <Card key={recipe.id}>
-                                    <h3 className='text-yellow-400 text-xl sm:text-2xl p-1'>{recipe.title}</h3>
-                                    <div className='flex flex-col my-3'>
+                                <Card key={recipe.id} className="flex flex-col items-center text-center p-3">
+                                    <h3 className='text-yellow-600 text-xl sm:text-2xl p-1 font-semibold'>{recipe.title}</h3>
+                                    <div className='flex flex-col items-center my-3 gap-3'>
                                         <div className='max-w-[200px] p-2'>
-                                            <img src={recipe.image} alt={recipe.title} className="min-h-[100px] object-cover" />
+                                            <img src={recipe.image} alt={recipe.title} className="min-h-[100px] object-cover rounded-md" />
                                         </div>
-                                        <div className='p-2'>
-                                            <Link
-                                                to={`/recipe/${recipe.id}`}
-                                                className='bg-green-700 hover:bg-green-800 text-white rounded-lg shadow-lg shadow-zinc-400 p-2 transition-all inline-block'
-                                            >
-                                                View Recipe
-                                            </Link>
-                                        </div>
+                                        <Link
+                                            to={`/recipe/${recipe.id}`}
+                                            className={buttonVariants({ variant: "default", size: "sm" })}
+                                        >
+                                            View Recipe
+                                        </Link>
                                     </div>
                                 </Card>
                             ))

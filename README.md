@@ -1,35 +1,90 @@
 # VeggieVibes
 
-## Descrizione
-VeggieVibes è un'applicazione progettata per promuovere uno stile di vita sano attraverso l'alimentazione vegetale. Utilizza TypeScript per garantire un codice più robusto e facilmente manutenibile.
+VeggieVibes is a recipe discovery app for people interested in plant-based eating. Users can search for vegetarian and vegan recipes, browse results, and view full recipe details — including ingredients and cooking time — all powered by the [Spoonacular API](https://spoonacular.com/food-api).
 
-## Caratteristiche
-- **TypeScript**: L'applicazione è scritta in TypeScript, che fornisce tipizzazione statica e aiuta a prevenire errori comuni durante lo sviluppo.
-- **Consumo API**: I dati vengono consumati da un'API esterna utilizzando `axios`, con l'implementazione di `debounce` per ottimizzare le richieste e `AbortController` per gestire le cancellazioni delle richieste in corso.
-- **Routing**: Utilizza `react-router v6` per una navigazione fluida tra le diverse pagine dell'applicazione.
+Whether you're fully vegan, vegetarian, or just trying to eat more plants, VeggieVibes makes it easy to find something tasty and healthy to cook.
 
-## Installazione
-1. Clona il repository:
+---
+
+## Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Framework | React 19 |
+| Language | TypeScript 5.7 |
+| Routing | React Router v7 |
+| HTTP Client | Axios |
+| Styling | Tailwind CSS v4 |
+| Icons | React Icons |
+| Build Tool | Vite 6 |
+
+---
+
+## Project Structure
+
+```
+src/
+├── components/         # Reusable UI components (Button, Card, Input, Navbar, Footer)
+├── custom hooks/       # Data-fetching hooks (useFetch, useFetchDetails)
+├── layouts/            # Page-level components
+│   ├── HomePage.tsx        # Landing page with hero and CTA
+│   ├── SearchRecipies.tsx  # Search page with recipe grid
+│   ├── RecipeDetails.tsx   # Single recipe view (ingredients, cook time)
+│   ├── WorkTogether.tsx    # Contact / collaboration page
+│   ├── RootLayout.tsx      # Shared layout (Navbar + Footer)
+│   └── ErrorPage.tsx       # 404 / error boundary page
+├── types/              # TypeScript interfaces for API responses and component props
+├── utils/
+│   └── router.tsx      # React Router configuration
+└── main.tsx            # App entry point
+```
+
+---
+
+## Key Implementation Details
+
+- **Debounced search** — API calls are delayed by 400 ms after the user stops typing, reducing unnecessary requests.
+- **Request cancellation** — An `AbortController` cancels any in-flight request when a new search starts, preventing race conditions and stale data.
+- **Typed API responses** — `RecipeSearch` and `RecipeDetails` interfaces ensure type safety end-to-end from the API to the UI.
+
+---
+
+## Getting Started
+
+1. Clone the repository:
    ```bash
    git clone https://github.com/tuo-username/veggievibes.git
-   ```
-2. Naviga nella cartella del progetto:
-   ```bash
    cd veggievibes
    ```
-3. Installa le dipendenze:
+
+2. Install dependencies:
    ```bash
    npm install
    ```
 
-## Utilizzo
-Per avviare l'applicazione, esegui:
-```bash
-npm start
-```
+3. Create a `.env` file in the project root and add your Spoonacular API key:
+   ```
+   VITE_API_KEY=your_api_key_here
+   ```
 
-## Contribuire
-Se desideri contribuire a questo progetto, sentiti libero di aprire una pull request o segnalare problemi.
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
 
-## Licenza
-Questo progetto è sotto licenza MIT. Vedi il file LICENSE per maggiori dettagli.
+---
+
+## Available Scripts
+
+| Script | Description |
+|---|---|
+| `npm run dev` | Start the Vite dev server |
+| `npm run build` | Type-check and build for production |
+| `npm run preview` | Preview the production build locally |
+| `npm run lint` | Run ESLint |
+
+---
+
+## License
+
+This project is licensed under the MIT License.

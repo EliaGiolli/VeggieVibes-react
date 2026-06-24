@@ -1,6 +1,6 @@
-import { CardProps } from "../types/cardTypes"
+import { CardProps } from "../types/cardTypes";
 
-function Card({children}:CardProps) {
+function Card({ children }: CardProps) {
   return (
     <article className="bg-white w-full sm:max-w-2xl min-h-fit flex flex-col justify-center items-center text-center rounded-md shadow-md shadow-gray-400 p-2">
         {children}
@@ -8,4 +8,4 @@ function Card({children}:CardProps) {
   )
 }
 
-export default Card
+export default Card;

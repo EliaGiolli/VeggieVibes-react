@@ -1,12 +1,10 @@
-//ROUTES
 import { Outlet } from 'react-router-dom';
 
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import ErrorBoundary from '../components/ErrorBoundary';
+import Navbar from '../../shared/components/Navbar';
+import Footer from '../../shared/components/Footer';
+import ErrorBoundary from '../../shared/components/ErrorBoundary';
 
 function RootLayout() {
-
   return (
     <div className="min-h-screen bg-zinc-100 text-zinc-900">
       <Navbar />

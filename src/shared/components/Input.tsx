@@ -1,4 +1,4 @@
-import { InputProps } from "../types/inputTypes"
+import { InputProps } from "../types/inputTypes";
 
 function Input({ type, placeholder, onChange, value }: InputProps) {
   return (
@@ -9,4 +9,4 @@ function Input({ type, placeholder, onChange, value }: InputProps) {
   )
 }
 
-export default Input
+export default Input;

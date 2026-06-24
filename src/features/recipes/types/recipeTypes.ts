@@ -1,4 +1,3 @@
-//API Types
 export interface RecipeSearch {
     id: number;
     title: string;
@@ -6,17 +5,16 @@ export interface RecipeSearch {
     imageType: string;
 }
 
-
 export interface RecipeDetails {
     id: number;
     title: string;
     readyInMinutes: number;
     image: string;
-    extendedIngredients:Ingredient[] | null;
+    extendedIngredients: Ingredient[] | null;
 }
 
-export interface Ingredient{
-    name:string;
-    amount:number;
+export interface Ingredient {
+    name: string;
+    amount: number;
     unit: string;
 }

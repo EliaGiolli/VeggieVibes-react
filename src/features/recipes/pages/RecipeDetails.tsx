@@ -1,5 +1,5 @@
-import Card from "../components/Card";
-import { useFetchDetails } from "../custom hooks/useSearchRecipies";
+import Card from "../../../shared/components/Card";
+import { useFetchDetails } from "../hooks/useSearchRecipes";
 import { useParams, Link } from "react-router-dom";
 
 function RecipeDetails() {

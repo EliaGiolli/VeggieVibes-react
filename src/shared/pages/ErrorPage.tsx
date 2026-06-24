@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
 function ErrorPage() {
   return (
@@ -11,4 +11,4 @@ function ErrorPage() {
   )
 }
 
-export default ErrorPage
+export default ErrorPage;

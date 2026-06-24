@@ -1,12 +1,12 @@
 import { useState } from 'react';
 
 import { Link } from 'react-router-dom';
-import { useFetch } from '../custom hooks/useSearchRecipies';
-import { RecipeSearch } from '../types/apiTypes';
-import Input from '../components/Input';
-import Card from '../components/Card';
+import { useFetch } from '../hooks/useSearchRecipes';
+import { RecipeSearch } from '../types/recipeTypes';
+import Input from '../../../shared/components/Input';
+import Card from '../../../shared/components/Card';
 
-function SearchRecipies() {
+function SearchRecipes() {
     const [searchQuery, setSearchQuery] = useState<string>("");
 
     const { recipes, error, loading } = useFetch(searchQuery);
@@ -60,4 +60,4 @@ function SearchRecipies() {
     );
 }
 
-export default SearchRecipies;
+export default SearchRecipes;

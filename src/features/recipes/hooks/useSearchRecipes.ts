@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { RecipeDetails, RecipeSearch } from "../types/apiTypes";
+import { RecipeDetails, RecipeSearch } from "../types/recipeTypes";
 
 const API_KEY = import.meta.env.VITE_API_KEY as string;
 const BASE_URL = "https://api.spoonacular.com/recipes";
